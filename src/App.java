@@ -1,13 +1,18 @@
-import paqueteMetodos.ControladorAcceso;
-import paqueteMetodos.LectorCSV;
+import dpMetodos.dpcontroladorAcceso;
+import dpMetodos.dpLectorCSV;
+import dpMetodos.dpBomba;
 
 public class App {
 
     public static void main(String[] args) {
-        ControladorAcceso pdCtrl = new ControladorAcceso();
+        dpcontroladorAcceso dpCtrl = new dpcontroladorAcceso();
 
-        if (pdCtrl.pdAutenticar()) {
-            LectorCSV pdLector = new LectorCSV("src/paqueteMetodos/DonosoPedro.csv");            pdLector.pdLeerArchivo();
+        if (dpCtrl.dpAutenticar()) {
+            dpLectorCSV dpLector = new dpLectorCSV("src/dpMetodos/DonosoPedro.csv");
+            dpLector.dpLeerArchivo();
+
+            dpBomba dpBomba = new dpBomba();
+          dpBomba.dpEjecutar(dpLector.dpGetCoordenadas(), dpLector.dpGetTotalFilas());
         }
     }
 }

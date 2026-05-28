@@ -1,12 +1,12 @@
-package paqueteMetodos;
+package dpMetodos;
 
-public class validadorContrasena {
+public class dpvalidadorContrasena {
 
     public final int ER = -1;
     public final int ESTADO_ACCEPT = 4;
 
     // 0=1, 1=2, 2=3, 3=4, 4=\n
-    final int[][] pdMt = {
+    final int[][] dpMt = {
     //   1      2      3      4     \n
       {  1,    ER,    ER,    ER,    ER }, // q0
       { ER,     2,    ER,    ER,    ER }, // q1  1
@@ -15,7 +15,7 @@ public class validadorContrasena {
       { ER,    ER,    ER,    ER,     4 }, // q4  ACCEPT 1234
     };
 
-    private int pdGetIndex(char c) {
+    private int dpGetIndex(char c) {
         switch (c) {
             case '1':  return 0;
             case '2':  return 1;
@@ -26,13 +26,13 @@ public class validadorContrasena {
         }
     }
 
-    public int pdValidar(String input) {
+    public int dpValidar(String input) {
         if (!input.endsWith("\n")) input += "\n";
         int q = 0;
         for (int i = 0; i < input.length(); i++) {
-            int idx = pdGetIndex(input.charAt(i));
-            if (idx == ER || pdMt[q][idx] == ER) return ER;
-            q = pdMt[q][idx];
+            int idx = dpGetIndex(input.charAt(i));
+            if (idx == ER || dpMt[q][idx] == ER) return ER;
+            q = dpMt[q][idx];
         }
         return q;
     }
