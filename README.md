@@ -1,18 +1,32 @@
-## Getting Started
+# Sistema de Autenticación y Control de Coordenadas (BOMB-93)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este proyecto es una aplicación de consola desarrollada en Java. Implementa un sistema de seguridad basado en la validación de usuarios mediante Autómatas Finitos Deterministas (DFA), lectura de archivos `.csv` y procesamiento de coordenadas de arsenal.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🚀 Instrucciones de Acceso (Login)
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Al iniciar la ejecución del programa (clase `App.java`), el sistema por consola solicitará credenciales de autenticación. El sistema cuenta con un máximo de **3 intentos** antes de bloquearse y cerrar la aplicación por seguridad.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Para ingresar exitosamente, debes utilizar **obligatoriamente** uno de los siguientes usuarios definidos en el autómata de validación:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### Usuarios Válidos permitidos:
+* **Estudiante (Cliente):** `Donoso`
+* **Profesor (Administrador):** `pat_mic`
 
-## Dependency Management
+### Contraseña de Acceso:
+* **Clave única para ambos usuarios:** `1234`
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+## ⚙️ Funcionamiento Posterior al Ingreso
+
+Una vez que el usuario es validado correctamente:
+1. El sistema mostrará la cédula y el nombre del usuario con acceso concedido.
+2. Se iniciará la lectura automática del archivo `.csv` con las coordenadas geoposicionales.
+3. Se mostrará una animación de carga (Loading de 0% a 100%) antes de revelar el contenido de cada línea.
+4. El motor del autómata principal evaluará el "Tipo de Arsenal" de las coordenadas específicas para determinar si la bomba explota.
+
+## 🛠️ Tecnologías y Estructura
+* **Lenguaje:** Java puro (sin librerías externas complejas).
+* **Entrada de datos:** Clase `Scanner`.
+* **Motor Lógico:** Matrices de transición de estados finitos.
